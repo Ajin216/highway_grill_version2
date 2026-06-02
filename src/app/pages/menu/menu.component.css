@@ -95,10 +95,10 @@
 }
 
 .dish-price {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   color: var(--primary-gold);
-  font-weight: 800;
-  font-size: 1.3rem;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .dish-desc {
