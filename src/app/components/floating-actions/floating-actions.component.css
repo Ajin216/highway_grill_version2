@@ -1,0 +1,99 @@
+.floating-actions-container {
+  position: fixed;
+  bottom: 140px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 99;
+}
+
+.action-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-white);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: var(--transition-smooth);
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.action-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* WhatsApp Specific Button */
+.whatsapp-btn {
+  background-color: #25D366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+  background-color: #20ba59;
+}
+
+/* Call Now Specific Button */
+.call-btn {
+  background-color: var(--primary-gold);
+  color: var(--bg-charcoal);
+  border-color: #b3820d;
+  box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+}
+
+.call-btn:hover {
+  box-shadow: var(--shadow-gold-heavy);
+  background-color: #f5c443;
+}
+
+.btn-icon {
+  width: 22px;
+  height: 22px;
+  transition: var(--transition-smooth);
+}
+
+/* Elegant Hover Tooltips */
+.btn-tooltip {
+  position: absolute;
+  right: 60px;
+  background-color: rgba(10, 10, 10, 0.95);
+  border: var(--border-glow);
+  color: var(--primary-gold);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-premium);
+  pointer-events: none;
+}
+
+.action-btn:hover .btn-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+@media (max-width: 576px) {
+  .floating-actions-container {
+    bottom: 20px;
+    right: 20px;
+    flex-direction: row;
+  }
+  
+  .btn-tooltip {
+    display: none; /* Hide tooltips on mobile to avoid layout crowding */
+  }
+}

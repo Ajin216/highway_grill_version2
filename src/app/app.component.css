@@ -1,0 +1,10 @@
+.page-content-wrapper {
+  min-height: calc(100vh - 350px);
+  padding-top: 80px;
+}
+
+@media (max-width: 992px) {
+  .page-content-wrapper {
+    padding-top: 70px;
+  }
+}

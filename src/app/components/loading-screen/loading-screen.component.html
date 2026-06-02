@@ -1,0 +1,21 @@
+<div class="loading-overlay" *ngIf="isVisible" [ngClass]="{ 'fade-out': !isVisible }">
+  <div class="loader-content">
+    <!-- Rotating Arabian Geometric Star SVG -->
+    <div class="star-container">
+      <svg class="arabian-star" viewBox="0 0 100 100" width="80" height="80">
+        <polygon points="50,5 63,37 95,50 63,63 50,95 37,63 5,50 37,37" fill="none" stroke="#D4A017" stroke-width="3" />
+        <polygon points="50,18 59,41 82,50 59,59 50,82 41,59 18,50 41,41" fill="none" stroke="#8B0000" stroke-width="2" />
+        <circle cx="50" cy="50" r="8" fill="#D4A017" />
+      </svg>
+      <div class="glow-ring"></div>
+    </div>
+    
+    <!-- Branding -->
+    <h1 class="loader-title">HIGHWAY GRILL</h1>
+    <div class="loader-subtitle-wrapper">
+      <span class="line"></span>
+      <span class="loader-subtitle">Authentic Arabian Mandhi</span>
+      <span class="line"></span>
+    </div>
+  </div>
+</div>

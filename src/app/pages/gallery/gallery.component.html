@@ -1,0 +1,63 @@
+<div class="gallery-page arabic-pattern">
+  <!-- Page Header -->
+  <header class="page-header text-center">
+    <div class="container animate-fade-in">
+      <span class="section-subtitle">Visual Feast</span>
+      <h1 class="page-title">Gallery &amp; Ambience</h1>
+      <div class="header-divider"></div>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section section-padding">
+    <div class="container">
+      <!-- Gallery Filter Tabs -->
+      <div class="gallery-filters">
+        <button 
+          class="gallery-filter-btn" 
+          [ngClass]="{ 'active': selectedFilter === 'all' }" 
+          (click)="setFilter('all')">
+          All Views
+        </button>
+        <button 
+          class="gallery-filter-btn" 
+          [ngClass]="{ 'active': selectedFilter === 'food' }" 
+          (click)="setFilter('food')">
+          Signature Dishes
+        </button>
+        <button 
+          class="gallery-filter-btn" 
+          [ngClass]="{ 'active': selectedFilter === 'interior' }" 
+          (click)="setFilter('interior')">
+          Restaurant Ambience
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <div class="gallery-item" *ngFor="let item of filteredGallery">
+          <!-- Image Placeholder -->
+          <div class="premium-placeholder gallery-placeholder">
+            <img [src]="item.imagePath" [alt]="item.title" class="placeholder-img" *ngIf="item.imagePath">
+            <ng-container *ngIf="!item.imagePath">
+              <!-- Custom Camera/Aesthetics SVG -->
+              <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="placeholder-text">{{ item.placeholderLabel }}</span>
+              <span class="placeholder-dim">{{ item.dimension }}</span>
+            </ng-container>
+            
+            <!-- Slide-up Elegant Caption Overlay -->
+            <div class="gallery-caption-overlay">
+              <span class="caption-category">{{ item.category === 'food' ? 'Authentic Culinary' : 'Luxury Majlis' }}</span>
+              <h3 class="caption-title">{{ item.title }}</h3>
+              <div class="caption-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
