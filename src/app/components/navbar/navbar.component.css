@@ -221,12 +221,12 @@
   flex-direction: column;
   align-items: center;
   list-style: none;
-  gap: 2.5rem;
+  gap: 1.8rem;
 }
 
 .mobile-nav-links a {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: 2px;
@@ -240,12 +240,12 @@
 }
 
 .mobile-action-li {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
 }
 
 .mobile-action-li .nav-btn-gold {
-  font-size: 1.1rem;
-  padding: 0.8rem 2.5rem;
+  font-size: 0.95rem;
+  padding: 0.6rem 2rem;
 }
 
 /* Responsive Breakpoints */
