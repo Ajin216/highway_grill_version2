@@ -59,6 +59,9 @@ export class VideosComponent {
   activeModalVideo: VideoItem | null = null;
 
   hoverPlay(video: HTMLVideoElement) {
+    if (!window.matchMedia('(hover: hover)').matches) {
+      return;
+    }
     video.play().catch(error => {
       if (error.name !== 'AbortError') {
         console.error('Video play failed:', error);
@@ -67,6 +70,9 @@ export class VideosComponent {
   }
 
   hoverPause(video: HTMLVideoElement) {
+    if (!window.matchMedia('(hover: hover)').matches) {
+      return;
+    }
     video.pause();
   }
 
@@ -81,7 +87,10 @@ export class VideosComponent {
     this.selectedCategory = category;
   }
 
-  openVideoModal(item: VideoItem) {
+  openVideoModal(item: VideoItem, videoEl?: HTMLVideoElement) {
+    if (videoEl) {
+      videoEl.pause();
+    }
     this.activeModalVideo = item;
     // Disable background scrolling while modal is open
     document.body.style.overflow = 'hidden';
