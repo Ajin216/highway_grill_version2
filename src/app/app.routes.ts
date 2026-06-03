@@ -27,6 +27,11 @@ export const routes: Routes = [
     title: 'Culinary Videos | Highway Grill'
   },
   {
+    path: 'reviews',
+    loadComponent: () => import('./pages/reviews/reviews.component').then(m => m.ReviewsComponent),
+    title: 'Customer Reviews | Highway Grill'
+  },
+  {
     path: 'reservation',
     loadComponent: () => import('./pages/reservation/reservation.component').then(m => m.ReservationComponent),
     title: 'Table Reservation | Highway Grill'

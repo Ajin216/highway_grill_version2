@@ -1,0 +1,226 @@
+<div class="reviews-page arabic-pattern">
+  <!-- Hero Section -->
+  <header class="page-header text-center">
+    <div class="container animate-fade-in">
+      <span class="section-subtitle">Diner Experiences</span>
+      <h1 class="page-title">Customer Reviews &amp; Experiences</h1>
+      <div class="header-divider"></div>
+      <p class="hero-intro">
+        Discover what our guests say about their culinary journeys. From our signature underground clay-pit roasted
+        Mandhi to the luxury of our traditional Majlis rooms, we thrive on delivering authentic Arabian excellence.
+      </p>
+      <div class="hero-rating">
+        <span class="hero-stars">★★★★★</span>
+        <span class="hero-rating-text">4.2 / 5.0 Rating based on {{ totalReviewsCount }} verified visits</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Customer Trust Metrics Section -->
+  <section class="trust-metrics-section">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">👥</div>
+          <h3 class="metric-number">{{ happyCustomersCount }}</h3>
+          <p class="metric-label">Happy Customers</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">📝</div>
+          <h3 class="metric-number">{{ totalReviewsCount }}</h3>
+          <p class="metric-label">Total Reviews</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⭐</div>
+          <h3 class="metric-number">{{ averageRating }} / 5.0</h3>
+          <p class="metric-label">Average Rating</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">❤️</div>
+          <h3 class="metric-number">{{ satisfactionRate }}%</h3>
+          <p class="metric-label">Satisfaction Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Statistics & Rating Distribution -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-container">
+        <!-- Average Rating Summary Card -->
+        <div class="stats-summary-card">
+          <h2 class="summary-score">{{ averageRating }}</h2>
+          <div class="summary-stars">★★★★★</div>
+          <p class="summary-subtitle">Out of 5 Stars</p>
+          <span class="summary-total-count">Based on {{ totalReviewsCount }} reviews</span>
+        </div>
+
+        <!-- Rating Distribution Bars -->
+        <div class="stats-distribution">
+          <div class="distribution-row" *ngFor="let dist of ratingDistribution">
+            <span class="dist-label">{{ dist.stars }} Star</span>
+            <div class="dist-bar-bg">
+              <div class="dist-bar-fill" [style.width.%]="dist.percentage"></div>
+            </div>
+            <span class="dist-percentage">{{ dist.percentage }}%</span>
+            <span class="dist-count">({{ dist.count }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Reviews Section -->
+  <section class="reviews-section section-padding">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Real Stories</span>
+        <h2 class="section-title">Featured Customer Reviews</h2>
+      </div>
+
+      <!-- Filters & Sorting -->
+      <div class="review-filters">
+        <button class="filter-btn" [ngClass]="{ 'active': selectedFilter === 0 }" (click)="setFilter(0)">All
+          Reviews</button>
+        <button class="filter-btn" [ngClass]="{ 'active': selectedFilter === 5 }" (click)="setFilter(5)">5
+          Stars</button>
+        <button class="filter-btn" [ngClass]="{ 'active': selectedFilter === 4 }" (click)="setFilter(4)">4
+          Stars</button>
+        <button class="filter-btn" [ngClass]="{ 'active': selectedFilter === 3 }" (click)="setFilter(3)">3
+          Stars</button>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="reviews-grid">
+        <div class="review-card" *ngFor="let review of filteredReviews | slice:0:displayedReviewsLimit">
+          <!-- Card Header: User Initials + Name + Date -->
+          <div class="review-card-header">
+            <div class="user-avatar" [style.background-color]="review.avatarColor">
+              {{ review.initials }}
+            </div>
+            <div class="user-info">
+              <div class="user-name-row">
+                <h4 class="user-name">{{ review.name }}</h4>
+                <span class="verified-badge" *ngIf="review.verified">
+                  <svg class="verified-icon" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg>
+                  Verified Diner
+                </span>
+              </div>
+              <span class="review-date">{{ review.date }}</span>
+            </div>
+          </div>
+
+          <!-- Card Content: Stars + Title + Text -->
+          <div class="review-card-body">
+            <div class="review-card-rating">
+              <span class="star-filled" *ngFor="let i of [1,2,3,4,5]"
+                [ngClass]="{'active': i <= review.rating}">★</span>
+            </div>
+            <h3 class="review-card-title">"{{ review.title }}"</h3>
+            <p class="review-card-text">{{ review.content }}</p>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state if no reviews in filter -->
+      <div class="empty-reviews text-center" *ngIf="filteredReviews.length === 0">
+        <p>No reviews found for this rating filter. Be the first to write one!</p>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-container text-center" *ngIf="filteredReviews.length > displayedReviewsLimit">
+        <button class="btn-secondary" (click)="loadMore()">Load More Reviews</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Write A Review Form Section -->
+  <section class="write-review-section section-padding bg-darker-override">
+    <div class="container">
+      <div class="write-review-container">
+        <div class="write-review-redirect text-center">
+          <h3>Write a Review</h3>
+          <p>Your feedback helps us serve you better. Share your experience on our Google profile.</p>
+          <a href="https://search.google.com/local/writereview?placeid=ChIJger7bwBRpjsRbOmWfnD1QyI" target="_blank"
+            class="btn-primary redirect-btn">Leave a Review on Google</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews Integration Section -->
+  <!-- <section class="google-reviews-section section-padding">
+    <div class="container">
+      <div class="google-badge-container">
+        <div class="google-info">
+          <div class="google-logo-wrapper">
+            <span class="g-letter">G</span><span class="o1">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span>
+            <span class="brand-sub">Reviews</span>
+          </div>
+          <div class="google-rating-summary">
+            <span class="google-rating-val">4.8</span>
+            <span class="google-rating-stars">★★★★★</span>
+            <span class="google-reviews-count">based on 1,420+ global ratings</span>
+          </div>
+        </div>
+        <div class="google-action">
+          <a href="https://google.com" target="_blank" class="btn-maroon">
+            <svg class="google-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.92 1 1 5.92 1 12.24s4.92 11.24 11.24 11.24c6.6 0 11-4.606 11-11.24 0-.756-.08-1.333-.178-1.956H12.24z"/>
+            </svg>
+            Leave a Review on Google
+          </a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- FAQ Section (Accordion Format) -->
+  <section class="faq-section section-padding bg-darker-override">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">FAQ</span>
+        <h2 class="section-title">Common Review Questions</h2>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item" *ngFor="let faq of faqs; let idx = index" [class.open]="faq.isOpen">
+          <button class="faq-question-btn" (click)="toggleFaq(idx)">
+            <span>{{ faq.question }}</span>
+            <span class="accordion-arrow">❖</span>
+          </button>
+          <div class="faq-answer-panel" [style.max-height]="faq.isOpen ? '300px' : '0'">
+            <div class="faq-answer-content">
+              <p>{{ faq.answer }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action Section -->
+  <section class="cta-section text-center section-padding">
+    <div class="container">
+      <div class="cta-content animate-fade-in">
+        <span class="section-subtitle">Reserve Your Experience</span>
+        <h2 class="cta-title">Savor Premium Arabian Hospitality</h2>
+        <p class="cta-text">
+          Treat yourself and your loved ones to our slow-cooked underground pit roasted Mandhi inside our luxury
+          traditional Majlis seating cabins.
+        </p>
+        <div class="cta-actions">
+          <a routerLink="/reservation" class="btn-primary">Book a Table</a>
+          <a routerLink="/menu" class="btn-secondary">View Menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
