@@ -1,4 +1,7 @@
-<div class="loading-overlay" *ngIf="isVisible" [ngClass]="{ 'fade-out': !isVisible }">
+<div class="loading-overlay" *ngIf="isVisible" [ngClass]="{ 'fade-out': isFadingOut }" (click)="dismissLoader()">
+  <!-- Atmospheric Background Image with Opacity -->
+  <div class="loader-bg-image"></div>
+
   <div class="loader-content">
     <!-- Rotating Arabian Geometric Star SVG -->
     <div class="star-container">
@@ -18,4 +21,15 @@
       <span class="line"></span>
     </div>
   </div>
+
+  <!-- Scroll Down to Enter Reminder -->
+  <div class="scroll-reminder">
+    <span class="scroll-text">Scroll Down to Enter</span>
+    <div class="scroll-icon-wrapper">
+      <svg class="scroll-arrow" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="#D4A017" />
+      </svg>
+    </div>
+  </div>
 </div>
+

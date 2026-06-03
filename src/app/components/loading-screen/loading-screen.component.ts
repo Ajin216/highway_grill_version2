@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,11 +10,35 @@ import { CommonModule } from '@angular/common';
 })
 export class LoadingScreenComponent implements OnInit {
   isVisible = true;
+  isFadingOut = false;
+  private timeoutId: any;
 
   ngOnInit() {
-    // Hide the loader after 1.5 seconds for a premium intro feel
+    // Automatically fade out after 2.5 seconds, or dismiss sooner if the user scrolls/clicks
+    this.timeoutId = setTimeout(() => {
+      this.dismissLoader();
+    }, 2500);
+  }
+
+  @HostListener('window:scroll', [])
+  @HostListener('window:wheel', [])
+  @HostListener('window:touchmove', [])
+  onUserScroll() {
+    this.dismissLoader();
+  }
+
+  dismissLoader() {
+    if (this.isFadingOut) return;
+    this.isFadingOut = true;
+    
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    // Let the 0.5s fade-out CSS transition complete before removing component from DOM
     setTimeout(() => {
       this.isVisible = false;
-    }, 1500);
+    }, 500);
   }
 }
+

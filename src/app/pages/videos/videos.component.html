@@ -1,0 +1,96 @@
+<div class="videos-page arabic-pattern">
+  <!-- Page Header -->
+  <header class="page-header text-center">
+    <div class="container animate-fade-in">
+      <span class="section-subtitle">Sights &amp; Sounds</span>
+      <h1 class="page-title">Culinary Journey in Motion</h1>
+      <div class="header-divider"></div>
+    </div>
+  </header>
+
+  <!-- Videos Section -->
+  <section class="videos-section section-padding">
+    <div class="container">
+      
+      <!-- Category Filter Tabs -->
+      <div class="video-filters">
+        <button 
+          *ngFor="let cat of categories"
+          class="video-filter-btn" 
+          [ngClass]="{ 'active': selectedCategory === cat }" 
+          (click)="setCategory(cat)">
+          {{ cat }}
+        </button>
+      </div>
+
+      <!-- Videos Grid -->
+      <div class="videos-grid">
+        <div class="video-card" *ngFor="let item of filteredVideos" 
+             (click)="openVideoModal(item)"
+             (mouseenter)="hoverPlay(vid)"
+             (mouseleave)="hoverPause(vid)">
+          <!-- Video Container -->
+          <div class="video-container">
+            <video #vid
+              [src]="item.videoPath" 
+              class="video-player"
+              loop
+              playsinline
+              muted>
+            </video>
+            
+            <!-- Custom Play Overlay (Indicating video is playable) -->
+            <div class="video-overlay-btn">
+              <div class="play-icon-wrapper">
+                <svg viewBox="0 0 24 24" class="play-svg">
+                  <path d="M8 5v14l11-7z" fill="currentColor"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Duration Badge -->
+            <span class="duration-badge">{{ item.duration }}</span>
+          </div>
+
+          <!-- Video Details -->
+          <div class="video-info">
+            <span class="video-category">{{ item.category }}</span>
+            <h3 class="video-title">{{ item.title }}</h3>
+            <p class="video-desc">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Video Modal Popup Overlay -->
+  <div class="video-modal-overlay" *ngIf="activeModalVideo" (click)="closeVideoModal()">
+    <div class="video-modal-container" (click)="$event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button class="modal-close-btn" (click)="closeVideoModal()" aria-label="Close Modal">
+        <span>&times;</span>
+      </button>
+
+      <!-- Video Player inside Modal -->
+      <div class="modal-video-wrapper">
+        <video 
+          [src]="activeModalVideo.videoPath" 
+          class="modal-video-player" 
+          controls 
+          autoplay 
+          playsinline>
+        </video>
+      </div>
+
+      <!-- Modal Video Info -->
+      <div class="modal-video-info">
+        <span class="modal-video-category">{{ activeModalVideo.category }}</span>
+        <h2 class="modal-video-title">{{ activeModalVideo.title }}</h2>
+        <p class="modal-video-desc">{{ activeModalVideo.description }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>
