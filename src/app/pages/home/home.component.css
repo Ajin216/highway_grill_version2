@@ -29,10 +29,18 @@
   height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
+}
+
+video.hero-video-element {
+  z-index: 1;
+}
+
+img.hero-video-element {
+  z-index: 2;
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-video-element.fade-out {
+img.hero-video-element.fade-out {
   opacity: 0;
   pointer-events: none;
 }

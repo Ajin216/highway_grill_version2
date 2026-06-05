@@ -5,7 +5,7 @@
     <div class="hero-bg-video">
       <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
         alt="Authentic Arabian Dining Experience" class="hero-video-element" [class.fade-out]="videoPlaying" loading="eager">
-      <video #heroVideo src="/videos/8477270-hd_1920_1080_24fps.mp4" loop muted playsinline class="hero-video-element" preload="auto" (playing)="onVideoPlaying()">
+      <video #heroVideo src="/videos/8477270-hd_1920_1080_24fps.mp4" muted playsinline class="hero-video-element" preload="auto" (playing)="onVideoPlaying()" (ended)="onVideoEnded()">
       </video>
       <div class="hero-video-overlay"></div>
     </div>

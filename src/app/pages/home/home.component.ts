@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.videoPlaying = true;
   }
 
+  onVideoEnded() {
+    this.videoPlaying = false;
+    if (this.heroVideo && this.heroVideo.nativeElement) {
+      this.heroVideo.nativeElement.currentTime = 0;
+    }
+  }
+
   reviews: Review[] = [
     {
       name: 'Faisal Bin Ahmad',
