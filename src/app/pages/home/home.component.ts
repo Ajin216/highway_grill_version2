@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -18,9 +18,16 @@ interface Review {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('heroVideo') heroVideo!: ElementRef<HTMLVideoElement>;
   activeReviewIndex = 0;
   private carouselInterval: any;
+  private videoTimeout: any;
+  videoPlaying = false;
+
+  onVideoPlaying() {
+    this.videoPlaying = true;
+  }
 
   reviews: Review[] = [
     {
@@ -77,8 +84,44 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startCarousel();
   }
 
+  ngAfterViewInit() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.loadAndPlayVideo();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '100px' });
+      
+      const hero = document.querySelector('.hero-section');
+      if (hero) {
+        observer.observe(hero);
+      } else {
+        this.loadAndPlayVideo();
+      }
+    } else {
+      this.loadAndPlayVideo();
+    }
+  }
+
+  private loadAndPlayVideo() {
+    this.videoTimeout = setTimeout(() => {
+      if (this.heroVideo && this.heroVideo.nativeElement) {
+        const video = this.heroVideo.nativeElement;
+        video.play().catch(err => {
+          console.log('Autoplay was prevented or video failed to play: ', err);
+        });
+      }
+    }, 4000);
+  }
+
   ngOnDestroy() {
     this.stopCarousel();
+    if (this.videoTimeout) {
+      clearTimeout(this.videoTimeout);
+    }
   }
 
   startCarousel() {

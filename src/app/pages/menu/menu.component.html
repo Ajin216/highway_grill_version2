@@ -9,7 +9,7 @@
   </header>
 
   <!-- Filter & Menu Section -->
-  <section class="menu-section section-padding">
+  <section class="menu-section section-padding bg-light-block">
     <div class="container">
       <!-- Category Filter Tabs -->
       <div class="filter-tabs">
@@ -39,9 +39,9 @@
         </button>
       </div>
 
-      <!-- Menu Grid -->
+      <!-- Menu Grid Layout -->
       <div class="menu-grid">
-        <div class="menu-card" *ngFor="let item of filteredItems">
+        <div class="menu-card animate-fade-in" *ngFor="let item of filteredItems">
           <!-- Food Image -->
           <div class="premium-placeholder menu-image-placeholder">
             <img [src]="item.imagePath" [alt]="item.name" class="placeholder-img" *ngIf="item.imagePath">
@@ -50,13 +50,11 @@
               <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
               </svg>
-              <span class="placeholder-text">{{ item.label }}</span>
-              <span class="placeholder-dim">600 x 450 px</span>
             </ng-container>
           </div>
 
           <!-- Dish Info -->
-          <div class="menu-info">
+          <div class="menu-card-info">
             <div class="menu-title-price">
               <h3 class="dish-name">{{ item.name }}</h3>
               <span class="dish-price">{{ item.price }}</span>
@@ -66,7 +64,7 @@
               <span class="dish-tag">{{ item.category === 'family' ? 'Family Pack' : (item.category === 'special' ? 'Chef Special' : 'Single Serving') }}</span>
               <a href="tel:+919074501397" class="order-link-btn" aria-label="Order now by telephone">
                 <span>Order Now</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
           </div>
@@ -76,7 +74,7 @@
   </section>
 
   <!-- Why Choose Us Feature Cards Section -->
-  <section class="why-choose-us section-padding">
+  <section class="why-choose-us section-padding bg-dark-block">
     <div class="container">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Excellence</span>

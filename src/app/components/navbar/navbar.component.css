@@ -4,28 +4,26 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.2rem 0;
-  background-color: rgba(18, 18, 18, 0.98);
+  padding: 1.5rem 0;
+  background-color: rgba(19, 34, 31, 0.96); /* forest green navbar background */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+  border-bottom: 1px solid rgba(255, 107, 53, 0.08);
   transition: var(--transition-smooth);
 }
 
 /* Scrolled Navbar Style */
 .navbar.scrolled {
-  padding: 0.8rem 0;
-  background-color: rgba(10, 10, 10, 0.98);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 1rem 0;
+  background-color: rgba(13, 24, 22, 0.98);
+  border-bottom: 1px solid rgba(255, 107, 53, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-container {
-  max-width: 1800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 4vw;
+  padding: 0 5vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,28 +38,30 @@
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--secondary-maroon), #550000);
-  border: 1.5px solid var(--primary-gold);
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 0px; /* Square minimalist */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-gold);
-  transform: rotate(45deg);
   transition: var(--transition-smooth);
 }
 
 .logo-icon span {
-  color: var(--primary-gold);
-  font-size: 1.2rem;
-  transform: rotate(-45deg);
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .navbar-logo:hover .logo-icon {
-  transform: rotate(135deg);
-  box-shadow: var(--shadow-gold-heavy);
+  background: var(--accent-color);
+}
+
+.navbar-logo:hover .logo-icon span {
+  color: var(--text-light);
 }
 
 .logo-text {
@@ -71,19 +71,19 @@
 
 .logo-title {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: 1.4rem;
+  font-weight: 300;
   color: var(--text-white);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   line-height: 1.2;
 }
 
 .logo-subtitle {
   font-family: var(--font-body);
   font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--primary-gold);
-  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: var(--accent-color);
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
@@ -91,19 +91,20 @@
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
 .nav-links a {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--text-light-gray);
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   position: relative;
   padding: 0.5rem 0;
+  opacity: 0.8;
 }
 
 .nav-links a::after {
@@ -112,14 +113,14 @@
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--primary-gold);
+  height: 1px;
+  background: var(--accent-color);
   transition: var(--transition-smooth);
-  box-shadow: var(--shadow-gold);
 }
 
 .nav-links a:hover {
-  color: var(--primary-gold);
+  color: var(--accent-color);
+  opacity: 1;
 }
 
 .nav-links a:hover::after,
@@ -128,7 +129,8 @@
 }
 
 .nav-links a.active {
-  color: var(--primary-gold);
+  color: var(--accent-color);
+  opacity: 1;
 }
 
 /* Action Button styling */
@@ -140,24 +142,23 @@
 
 .nav-btn-gold {
   background: transparent;
-  color: var(--primary-gold);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  color: var(--accent-color);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   padding: 0.6rem 1.4rem;
-  border: 1.5px solid var(--primary-gold);
-  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+  border-radius: 0px;
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .nav-btn-gold:hover {
-  background: var(--primary-gold);
-  color: var(--bg-charcoal);
-  box-shadow: var(--shadow-gold-heavy);
-  transform: translateY(-2px);
+  background: var(--accent-color);
+  color: var(--text-light);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.15);
 }
 
 /* Mobile Toggler */
@@ -165,8 +166,8 @@
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 25px;
-  height: 18px;
+  width: 24px;
+  height: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -175,15 +176,15 @@
 
 .burger-line {
   width: 100%;
-  height: 2px;
+  height: 1.5px;
   background-color: var(--text-white);
   transition: var(--transition-smooth);
 }
 
 /* Mobile Open State Animations for Burger */
 .navbar.mobile-open .burger-line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-  background-color: var(--primary-gold);
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--accent-color);
 }
 
 .navbar.mobile-open .burger-line:nth-child(2) {
@@ -191,8 +192,8 @@
 }
 
 .navbar.mobile-open .burger-line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-  background-color: var(--primary-gold);
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--accent-color);
 }
 
 /* Mobile Drawer Overlay */
@@ -202,7 +203,7 @@
   left: 100%;
   width: 100%;
   height: 100vh;
-  background-color: rgba(10, 10, 10, 0.98);
+  background-color: rgba(13, 24, 22, 0.99); /* forest green mobile drawer background */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -221,13 +222,13 @@
   flex-direction: column;
   align-items: center;
   list-style: none;
-  gap: 1.8rem;
+  gap: 2.2rem;
 }
 
 .mobile-nav-links a {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 300;
   color: var(--text-white);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -235,8 +236,7 @@
 
 .mobile-nav-links a.active,
 .mobile-nav-links a:hover {
-  color: var(--primary-gold);
-  text-shadow: 0 0 10px rgba(212, 160, 23, 0.4);
+  color: var(--accent-color);
 }
 
 .mobile-action-li {
@@ -244,8 +244,8 @@
 }
 
 .mobile-action-li .nav-btn-gold {
-  font-size: 0.95rem;
-  padding: 0.6rem 2rem;
+  font-size: 0.85rem;
+  padding: 0.7rem 2.2rem;
 }
 
 /* Responsive Breakpoints */

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none" stroke="#13221f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.05">
+  <!-- Grill Bowl -->
+  <path d="M 26,45 C 26,63 36,73 50,73 C 64,73 74,63 74,45" />
+  <path d="M 21,45 C 40,43 60,43 79,45" />
+  <!-- Bowl double rim -->
+  <path d="M 23,47 C 41,45 59,45 77,47" />
+  
+  <!-- Grill Lid (resting slightly open/titled to the side) -->
+  <path d="M 28,41 C 28,26 37,21 51,21 C 65,21 74,26 74,41 Z" />
+  <!-- Lid handle -->
+  <path d="M 45,21 C 47,16 53,16 55,21" />
+  
+  <!-- Legs -->
+  <path d="M 39,72 L 29,88" />
+  <path d="M 61,72 L 71,88" />
+  <path d="M 50,73 L 50,90" />
+  <!-- Triangular support bar -->
+  <path d="M 33,81 L 67,81" />
+  <!-- Small wheels on two legs -->
+  <circle cx="28" cy="89" r="2.5" />
+  <circle cx="72" cy="89" r="2.5" />
+  
+  <!-- Smoke puffs -->
+  <path d="M 33,16 C 32,11 36,9 38,13" />
+  <path d="M 44,13 C 43,8 47,6 49,10" />
+  <path d="M 59,14 C 58,9 62,7 64,11" />
+  
+  <!-- Fire/charcoal glow indications at grate -->
+  <path d="M 33,45 C 35,40 38,40 40,45" />
+  <path d="M 45,45 C 47,40 50,40 52,45" />
+  <path d="M 58,45 C 60,40 63,40 65,45" />
+</svg>

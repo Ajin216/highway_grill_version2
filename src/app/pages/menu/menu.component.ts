@@ -26,6 +26,13 @@ interface FeatureItem {
 })
 export class MenuComponent {
   selectedCategory: 'all' | 'individual' | 'family' | 'special' = 'all';
+  activeMenuImage: string = 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80';
+
+  setActiveImage(imagePath?: string) {
+    if (imagePath) {
+      this.activeMenuImage = imagePath;
+    }
+  }
 
   menuItems: MenuItem[] = [
     {
@@ -126,5 +133,9 @@ export class MenuComponent {
 
   filterCategory(category: 'all' | 'individual' | 'family' | 'special') {
     this.selectedCategory = category;
+    const items = this.filteredItems;
+    if (items.length > 0 && items[0].imagePath) {
+      this.activeMenuImage = items[0].imagePath;
+    }
   }
 }
