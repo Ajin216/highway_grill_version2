@@ -103,14 +103,13 @@
       <!-- Quick Message Dispatch Column -->
       <div class="contact-form-col">
         <div class="form-wrapper-card">
-          <div class="form-title text-center">
-            <h3>Send a Message</h3>
-            <p>Have an inquiry or request? Leave a message below, and our host will respond shortly.</p>
-            <div class="star-accent">❖</div>
-          </div>
-
           <!-- Direct Form -->
           <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate class="contact-form">
+            <div class="form-title text-center">
+              <h3>Send a Message</h3>
+              <p>Have an inquiry or request? Leave a message below, and our host will respond shortly.</p>
+              <div class="star-accent">❖</div>
+            </div>
 
             <!-- Success Status Message Overlay -->
             <div class="status-success-box" *ngIf="showStatusMessage">

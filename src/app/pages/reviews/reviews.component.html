@@ -1,24 +1,26 @@
 <div class="reviews-page arabic-pattern">
-  <!-- Hero Section -->
+  <!-- Page Header -->
   <header class="page-header text-center">
     <div class="container animate-fade-in">
       <span class="section-subtitle">Diner Experiences</span>
       <h1 class="page-title">Customer Reviews &amp; Experiences</h1>
       <div class="header-divider"></div>
+    </div>
+  </header>
+
+  <!-- Customer Trust Metrics & Statistics Section -->
+  <section class="trust-stats-section section-padding bg-light-block">
+    <div class="container animate-fade-in text-center">
       <p class="hero-intro">
         Discover what our guests say about their culinary journeys. From our signature underground clay-pit roasted
         Mandhi to the luxury of our traditional Majlis rooms, we thrive on delivering authentic Arabian excellence.
       </p>
-      <div class="hero-rating">
+      <div class="hero-rating mb-5">
         <span class="hero-stars">★★★★★</span>
         <span class="hero-rating-text">4.2 / 5.0 Rating based on {{ totalReviewsCount }} verified visits</span>
       </div>
-    </div>
-  </header>
 
-  <!-- Customer Trust Metrics Section -->
-  <section class="trust-metrics-section">
-    <div class="container">
+      <!-- Metrics Grid -->
       <div class="metrics-grid">
         <div class="metric-card">
           <div class="metric-icon">👥</div>
@@ -41,13 +43,9 @@
           <p class="metric-label">Satisfaction Rate</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Review Statistics & Rating Distribution -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-container">
+      <!-- Review Statistics & Rating Distribution -->
+      <div class="stats-container mt-5">
         <!-- Average Rating Summary Card -->
         <div class="stats-summary-card">
           <h2 class="summary-score">{{ averageRating }}</h2>
@@ -72,8 +70,8 @@
   </section>
 
   <!-- Featured Reviews Section -->
-  <section class="reviews-section section-padding">
-    <div class="container">
+  <section class="reviews-section section-padding bg-dark-block">
+    <div class="container animate-fade-in">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Real Stories</span>
         <h2 class="section-title">Featured Customer Reviews</h2>
@@ -121,8 +119,6 @@
             </div>
             <h3 class="review-card-title">"{{ review.title }}"</h3>
             <p class="review-card-text">{{ review.content }}</p>
-
-
           </div>
         </div>
       </div>
@@ -139,11 +135,9 @@
     </div>
   </section>
 
-
-
   <!-- Write A Review Form Section -->
-  <section class="write-review-section section-padding bg-darker-override">
-    <div class="container">
+  <section class="write-review-section section-padding bg-light-block">
+    <div class="container animate-fade-in">
       <div class="write-review-container">
         <div class="write-review-redirect text-center">
           <h3>Write a Review</h3>
@@ -155,36 +149,9 @@
     </div>
   </section>
 
-  <!-- Google Reviews Integration Section -->
-  <!-- <section class="google-reviews-section section-padding">
-    <div class="container">
-      <div class="google-badge-container">
-        <div class="google-info">
-          <div class="google-logo-wrapper">
-            <span class="g-letter">G</span><span class="o1">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span>
-            <span class="brand-sub">Reviews</span>
-          </div>
-          <div class="google-rating-summary">
-            <span class="google-rating-val">4.8</span>
-            <span class="google-rating-stars">★★★★★</span>
-            <span class="google-reviews-count">based on 1,420+ global ratings</span>
-          </div>
-        </div>
-        <div class="google-action">
-          <a href="https://google.com" target="_blank" class="btn-maroon">
-            <svg class="google-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-              <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.92 1 1 5.92 1 12.24s4.92 11.24 11.24 11.24c6.6 0 11-4.606 11-11.24 0-.756-.08-1.333-.178-1.956H12.24z"/>
-            </svg>
-            Leave a Review on Google
-          </a>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
   <!-- FAQ Section (Accordion Format) -->
-  <section class="faq-section section-padding bg-darker-override">
-    <div class="container">
+  <section class="faq-section section-padding bg-dark-block">
+    <div class="container animate-fade-in">
       <div class="section-title-wrapper">
         <span class="section-subtitle">FAQ</span>
         <h2 class="section-title">Common Review Questions</h2>
@@ -207,9 +174,9 @@
   </section>
 
   <!-- Call To Action Section -->
-  <section class="cta-section text-center section-padding">
-    <div class="container">
-      <div class="cta-content animate-fade-in">
+  <section class="cta-section text-center section-padding bg-light-block">
+    <div class="container animate-fade-in">
+      <div class="cta-content">
         <span class="section-subtitle">Reserve Your Experience</span>
         <h2 class="cta-title">Savor Premium Arabian Hospitality</h2>
         <p class="cta-text">
