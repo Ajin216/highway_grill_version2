@@ -266,6 +266,7 @@ img.hero-video-element.fade-out {
   gap: 2rem;
   width: 100%;
   transition: var(--transition-smooth);
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .testimonial-card:hover {
@@ -286,7 +287,7 @@ img.hero-video-element.fade-out {
 .review-comment {
   font-size: 1.25rem;
   line-height: 1.9;
-  font-family: var(--font-heading);
+  font-family: 'Roboto', sans-serif !important;
   font-style: italic;
   font-weight: 300;
 }
@@ -315,7 +316,7 @@ img.hero-video-element.fade-out {
 }
 
 .client-name {
-  font-family: var(--font-body);
+  font-family: 'Roboto', sans-serif !important;
   font-size: 0.95rem;
   font-weight: 500;
   color: inherit;

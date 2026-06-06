@@ -6,11 +6,11 @@
 }
 
 .reservation-frame-card {
-  background-color: var(--bg-card);
-  border: var(--border-glow);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 4rem 3.5rem;
-  box-shadow: var(--shadow-premium);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   position: relative;
 }
 
@@ -21,7 +21,7 @@
   left: 10px;
   right: 10px;
   bottom: 10px;
-  border: 1px dashed rgba(212, 160, 23, 0.15);
+  border: 1px dashed rgba(255, 107, 53, 0.2);
   border-radius: 8px;
   pointer-events: none;
 }
@@ -32,12 +32,12 @@
 
 .reservation-header h2 {
   font-size: 2.2rem;
-  color: var(--text-white);
+  color: var(--text-dark);
   margin-bottom: 1rem;
 }
 
 .reservation-header p {
-  color: var(--text-muted);
+  color: #555555;
   max-width: 650px;
   margin: 0 auto 1.5rem auto;
   font-size: 0.95rem;
@@ -45,7 +45,7 @@
 }
 
 .frame-divider {
-  color: var(--primary-gold);
+  color: var(--accent-color);
   font-size: 1.1rem;
 }
 
@@ -78,15 +78,15 @@ label {
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--accent-cream);
+  color: var(--text-dark);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .form-control {
-  background-color: var(--bg-charcoal);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-white);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--text-dark);
   padding: 0.9rem 1.2rem;
   border-radius: 4px;
   font-family: var(--font-body);
@@ -96,22 +96,22 @@ label {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--primary-gold);
-  box-shadow: 0 0 10px rgba(212, 160, 23, 0.15);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.15);
 }
 
 .select-control {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4a017' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ff6b35' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1.2rem center;
   padding-right: 2.5rem;
 }
 
 .select-control option {
-  background-color: var(--bg-card);
-  color: var(--text-white);
+  background-color: #ffffff;
+  color: var(--text-dark);
 }
 
 .textarea-control {
@@ -156,14 +156,14 @@ label {
 }
 
 .modal-card {
-  background-color: var(--bg-card);
-  border: 2px solid var(--primary-gold);
+  background-color: #ffffff;
+  border: 2px solid var(--accent-color);
   border-radius: 12px;
   padding: 4rem 3rem;
   max-width: 580px;
   width: 90%;
   text-align: center;
-  box-shadow: var(--shadow-premium), var(--shadow-gold-heavy);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,39 +178,39 @@ label {
   left: 8px;
   right: 8px;
   bottom: 8px;
-  border: 1px dashed rgba(212, 160, 23, 0.2);
+  border: 1px dashed rgba(255, 107, 53, 0.25);
   border-radius: 8px;
   pointer-events: none;
 }
 
 .modal-star {
-  color: var(--primary-gold);
+  color: var(--accent-color);
   font-size: 2.2rem;
   animation: spinSlow 8s linear infinite;
 }
 
 .modal-title {
   font-size: 2rem;
-  color: var(--text-white);
+  color: var(--text-dark);
   letter-spacing: 1px;
 }
 
 .modal-message {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: var(--text-light-gray);
+  color: var(--text-dark);
 }
 
 .modal-submessage {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: #666666;
   line-height: 1.6;
 }
 
 .modal-divider {
   width: 100px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .modal-btn {

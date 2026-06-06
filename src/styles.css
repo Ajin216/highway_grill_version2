@@ -347,11 +347,13 @@ a {
 .section-title::before {
   display: none !important;
 }
-
 /* Common Header for Subpages */
 .page-header {
   padding: 10rem 0 6rem 0;
   background-color: var(--primary-dark);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--text-light);
   border-bottom: 1px solid rgba(255, 107, 53, 0.08);
   position: relative;
@@ -364,8 +366,47 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 L22 6 L28 4 L24 10 L30 10 L25 14 L29 19 L23 18 L24 24 L18 21 L17 27 L13 21 L8 25 L11 19 L6 19 L11 15 L7 10 L13 11 L12 5 L17 8 Z' fill='%23ff6b35' fill-opacity='0.01'/%3E%3C/svg%3E");
+  background: linear-gradient(to bottom, rgba(19, 34, 31, 0.82) 0%, rgba(19, 34, 31, 0.65) 100%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Page Header Background Image Overrides */
+.about-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80');
+}
+
+.menu-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=1600&q=80');
+}
+
+.gallery-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80');
+}
+
+.videos-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80');
+}
+
+.reviews-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1600&q=80');
+}
+
+.contact-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80');
+}
+
+.reservation-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80');
+}
+
+.orders-page .page-header {
+  background-image: url('https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=1600&q=80');
 }
 
 @media (max-width: 992px) {
@@ -392,25 +433,37 @@ a {
   position: relative !important;
   overflow: hidden !important;
   
-  /* Render all 6 hand-drawn doodles simultaneously */
+  /* Render all 12 hand-drawn doodles simultaneously */
   background-image: 
     url('/doodles/chef-hat.svg'),
     url('/doodles/utensils.svg'),
     url('/doodles/grill.svg'),
     url('/doodles/cloche.svg'),
     url('/doodles/kebab.svg'),
-    url('/doodles/spices.svg') !important;
+    url('/doodles/spices.svg'),
+    url('/doodles/dallah.svg'),
+    url('/doodles/flame.svg'),
+    url('/doodles/teapot.svg'),
+    url('/doodles/saucer.svg'),
+    url('/doodles/knife-fork.svg'),
+    url('/doodles/chili-pepper.svg') !important;
   background-repeat: no-repeat !important;
   
-  /* Arrange 3 doodles on the left margin, and 3 on the right margin */
+  /* Arrange 12 doodles, randomly spread across the entire background surface */
   background-position: 
-    2% 8%,
-    98% 25%,
-    1.5% 45%,
-    98.5% 62%,
-    2.5% 78%,
-    97.5% 92% !important;
-  background-size: clamp(80px, 9vw, 140px) !important;
+    15% 8%,
+    82% 14%,
+    45% 23%,
+    8% 32%,
+    88% 41%,
+    30% 50%,
+    72% 59%,
+    18% 68%,
+    55% 77%,
+    85% 86%,
+    38% 93%,
+    65% 97% !important;
+  background-size: clamp(65px, 7.5vw, 120px) !important;
 }
 .bg-light-block h1, .bg-light-block h2, .bg-light-block h3, .bg-light-block h4, .bg-light-block h5, .bg-light-block h6 {
   color: var(--text-dark) !important;
@@ -432,14 +485,20 @@ a {
 /* Responsiveness adjustments for smaller viewports */
 @media (max-width: 991px) {
   .bg-light-block {
-    background-size: clamp(50px, 7vw, 75px) !important;
+    background-size: clamp(45px, 6vw, 65px) !important;
     background-position: 
-      1% 8%,
-      99% 25%,
-      0.5% 45%,
-      99.5% 62%,
-      1% 78%,
-      99% 92% !important;
+      15% 8%,
+      82% 14%,
+      45% 23%,
+      8% 32%,
+      88% 41%,
+      30% 50%,
+      72% 59%,
+      18% 68%,
+      55% 77%,
+      85% 86%,
+      38% 93%,
+      65% 97% !important;
   }
 }
 

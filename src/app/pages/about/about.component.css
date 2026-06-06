@@ -23,11 +23,11 @@
 }
 
 .lead-text {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   line-height: 1.8;
   font-family: var(--font-heading);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
   opacity: 0.95;
 }
 
@@ -45,7 +45,8 @@
 .interior-placeholder {
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 200px 200px 0 0; /* Arabian Arch top */
+  border-radius: 200px 200px 0 0;
+  /* Arabian Arch top */
   overflow: hidden;
   box-shadow: var(--shadow-premium);
   border: 8px double #bfa15f;
@@ -130,12 +131,6 @@
 }
 
 /* Quote Section */
-.quote-box {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  padding: 4rem 2rem;
-}
 
 .quote-mark {
   font-family: var(--font-heading);
@@ -181,23 +176,26 @@
 }
 
 .faq-item {
-  background-color: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 107, 53, 0.1);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 0px;
   padding: 3rem 3.5rem;
   transition: var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .faq-item:hover {
   border-color: var(--accent-color);
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #ffffff;
+  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.08);
+  transform: translateY(-2px);
 }
 
 .faq-question {
   font-family: var(--font-heading);
   font-size: 1.45rem;
   font-weight: 400;
-  color: var(--text-light);
+  color: var(--text-dark);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -212,7 +210,7 @@
 .faq-answer {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: var(--text-light-gray);
+  color: var(--text-dark);
   opacity: 0.8;
 }
 

@@ -1,0 +1,154 @@
+<div class="orders-page arabic-pattern">
+  <!-- Page Header -->
+  <header class="page-header text-center">
+    <div class="container animate-fade-in">
+      <span class="section-subtitle">Your Selection</span>
+      <h1 class="page-title">My Orders</h1>
+      <div class="header-divider"></div>
+    </div>
+  </header>
+
+  <!-- Orders Content Section -->
+  <section class="orders-section section-padding bg-light-block">
+    <div class="container">
+      
+      <!-- Empty Cart State -->
+      <div class="empty-state text-center animate-fade-in" *ngIf="(orderService.items$ | async)?.length === 0">
+        <div class="empty-icon-box">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </div>
+        <h2>Your Order is Currently Empty</h2>
+        <p>Browse our handpicked luxury Mandhi and specialties to add them here.</p>
+        <a routerLink="/menu" class="btn-primary continue-btn-empty">Explore Signature Menu</a>
+      </div>
+
+      <!-- Filled Cart State Grid -->
+      <div class="orders-grid" *ngIf="(orderService.items$ | async)?.length ?? 0 > 0">
+        
+        <!-- Left Column: Ordered Items List Container -->
+        <div class="orders-list-container">
+          <!-- List Header with Clear button -->
+          <div class="orders-list-header animate-fade-in">
+            <span class="items-count">{{ (orderService.items$ | async)?.length }} Item(s) Selected</span>
+            <button (click)="clearAll()" class="btn-clear-all" aria-label="Clear all orders">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              <span>Clear Order</span>
+            </button>
+          </div>
+
+          <div class="orders-list">
+            <div class="order-item-card animate-fade-in" *ngFor="let item of orderService.items$ | async">
+              <!-- Thumbnail Image -->
+              <div class="order-item-image">
+                <img [src]="item.imagePath" [alt]="item.name" class="item-img" *ngIf="item.imagePath">
+                <div class="placeholder-fallback" *ngIf="!item.imagePath">❖</div>
+              </div>
+
+              <!-- Details: Name + Unit Price + Qty Adjuster -->
+              <div class="order-item-details">
+                <h3 class="item-name">{{ item.name }}</h3>
+                <span class="unit-price">Unit Price: {{ item.priceString }}</span>
+                
+                <div class="quantity-controller">
+                  <button (click)="decrement(item)" class="qty-btn" aria-label="Decrease quantity">
+                    <span>-</span>
+                  </button>
+                  <span class="qty-value">{{ item.quantity }}</span>
+                  <button (click)="increment(item)" class="qty-btn" aria-label="Increase quantity">
+                    <span>+</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Price and Delete button -->
+              <div class="order-item-price-remove">
+                <span class="item-total-price">Rs. {{ item.price * item.quantity }}</span>
+                <button (click)="remove(item)" class="remove-btn" aria-label="Remove item">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Order Summary & Placement Details -->
+        <div class="order-summary-box animate-fade-in">
+          <h2 class="summary-title">Order Summary</h2>
+          <div class="summary-divider"></div>
+          
+          <div class="summary-row">
+            <span class="row-label">Subtotal</span>
+            <span class="row-value">Rs. {{ orderService.getTotalPrice() }}</span>
+          </div>
+          
+          <div class="summary-row">
+            <span class="row-label">Order Handling</span>
+            <span class="row-value spec">Verify on Placement</span>
+          </div>
+          
+          <div class="summary-divider"></div>
+          
+          <div class="summary-row total-row">
+            <span class="total-label">Grand Total</span>
+            <span class="total-value">Rs. {{ orderService.getTotalPrice() }}</span>
+          </div>
+
+          <div class="summary-divider"></div>
+          
+          <!-- CTA Action Buttons -->
+          <div class="order-actions">
+            <!-- Order via WhatsApp (Filled Green button) -->
+            <button (click)="orderViaWhatsApp()" class="btn-whatsapp" aria-label="Order via WhatsApp">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.46 3.48 1.332 5l-1.417 5.176 5.295-1.39a9.92 9.92 0 0 0 4.778 1.214h.004c5.502 0 9.988-4.482 9.988-9.988C22 6.482 17.518 2 12.012 2zm6.657 14.15c-.273.77-1.56 1.4-2.146 1.492-.516.082-1.19.145-1.922-.09-.452-.143-1.012-.355-1.745-.668-3.118-1.328-5.132-4.502-5.288-4.712-.156-.21-1.27-1.687-1.27-3.22 0-1.53.797-2.285 1.082-2.583.285-.297.625-.37.832-.37h.6c.19 0 .445-.074.697.536.27.653.924 2.26.992 2.4.068.14.113.3.015.49-.098.19-.147.31-.293.482-.146.173-.307.387-.44.52-.15.15-.31.314-.132.62.177.304.787 1.295 1.688 2.097.973.868 1.792 1.137 2.052 1.267.26.13.412.11.565-.065.152-.175.656-.763.832-1.02.176-.258.353-.217.6-.124.246.093 1.563.738 1.832.872.27.135.452.2.518.31.066.113.066.653-.207 1.423z"/>
+              </svg>
+              <span>Order via WhatsApp</span>
+            </button>
+
+            <!-- Order via Call (Outlined Accent button) -->
+            <a href="tel:+919074501397" class="btn-call" aria-label="Order via Call">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Order via Call</span>
+            </a>
+
+            <!-- Continue Ordering (Text button or outline style) -->
+            <a routerLink="/menu" class="btn-continue" aria-label="Continue Ordering">
+              <span>Continue Ordering</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Custom Confirmation Modal Overlay -->
+  <div class="confirm-modal-overlay" *ngIf="showConfirmModal" (click)="closeModal()">
+    <div class="confirm-modal-box animate-scale-up" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-icon">❖</span>
+        <h2 class="modal-title">{{ modalTitle }}</h2>
+      </div>
+      <p class="modal-message">{{ modalMessage }}</p>
+      <div class="modal-actions">
+        <button (click)="closeModal()" class="btn-modal-cancel">Cancel</button>
+        <button (click)="onConfirm()" class="btn-modal-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

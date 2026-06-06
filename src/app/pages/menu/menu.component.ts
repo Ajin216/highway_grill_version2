@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { OrderService } from '../../services/order.service';
 
 interface MenuItem {
   id: string;
@@ -25,6 +27,9 @@ interface FeatureItem {
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+  private orderService = inject(OrderService);
+  private router = inject(Router);
+
   selectedCategory: 'all' | 'individual' | 'family' | 'special' = 'all';
   activeMenuImage: string = 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80';
 
@@ -32,6 +37,11 @@ export class MenuComponent {
     if (imagePath) {
       this.activeMenuImage = imagePath;
     }
+  }
+
+  addToOrder(item: MenuItem) {
+    this.orderService.addToOrder(item.id, item.name, item.price, item.imagePath);
+    this.router.navigate(['/orders']);
   }
 
   menuItems: MenuItem[] = [

@@ -42,6 +42,11 @@ export const routes: Routes = [
     title: 'Contact Us | Highway Grill'
   },
   {
+    path: 'orders',
+    loadComponent: () => import('./pages/orders/orders.component').then(m => m.OrdersComponent),
+    title: 'My Orders | Highway Grill'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

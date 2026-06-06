@@ -48,13 +48,12 @@
               <span class="placeholder-text">{{ item.placeholderLabel }}</span>
               <span class="placeholder-dim">{{ item.dimension }}</span>
             </ng-container>
-            
-            <!-- Slide-up Elegant Caption Overlay -->
-            <div class="gallery-caption-overlay">
-              <span class="caption-category">{{ item.category === 'food' ? 'Authentic Culinary' : 'Luxury Majlis' }}</span>
-              <h3 class="caption-title">{{ item.title }}</h3>
-              <div class="caption-border"></div>
-            </div>
+          </div>
+          
+          <!-- Dish/View Name & Category under the image -->
+          <div class="gallery-caption-bottom">
+            <span class="caption-category">{{ item.category === 'food' ? 'Authentic Culinary' : 'Luxury Majlis' }}</span>
+            <h3 class="caption-title">{{ item.title }}</h3>
           </div>
         </div>
       </div>

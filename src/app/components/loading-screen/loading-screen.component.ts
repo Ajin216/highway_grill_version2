@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,8 +12,17 @@ export class LoadingScreenComponent implements OnInit {
   isVisible = true;
   isFadingOut = false;
   private timeoutId: any;
+  private isListening = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
+    // Enable user-triggered dismiss after 500ms to ignore initial browser layout scroll events
+    setTimeout(() => {
+      this.isListening = true;
+      this.cdr.detectChanges();
+    }, 500);
+
     // Automatically fade out after 2.5 seconds, or dismiss sooner if the user scrolls/clicks
     this.timeoutId = setTimeout(() => {
       this.dismissLoader();
@@ -24,13 +33,16 @@ export class LoadingScreenComponent implements OnInit {
   @HostListener('window:wheel', [])
   @HostListener('window:touchmove', [])
   onUserScroll() {
-    this.dismissLoader();
+    if (this.isListening) {
+      this.dismissLoader();
+    }
   }
 
   dismissLoader() {
     if (this.isFadingOut) return;
     this.isFadingOut = true;
-    
+    this.cdr.detectChanges();
+
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
     }
@@ -38,6 +50,7 @@ export class LoadingScreenComponent implements OnInit {
     // Let the 0.5s fade-out CSS transition complete before removing component from DOM
     setTimeout(() => {
       this.isVisible = false;
+      this.cdr.detectChanges();
     }, 500);
   }
 }
