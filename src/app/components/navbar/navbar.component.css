@@ -207,8 +207,12 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  padding: 120px 24px 40px 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transition: var(--transition-smooth);
   z-index: 1000;
 }

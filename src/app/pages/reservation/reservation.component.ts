@@ -37,6 +37,27 @@ export class ReservationComponent {
     if (form.valid) {
       this.isSubmitted = true;
       this.showSuccessModal = true;
+
+      // Construct professional WhatsApp message
+      const phone = '919074501397';
+      const specialRequests = this.reservation.requests ? this.reservation.requests : 'None';
+      const messageText = `👑 *HIGHWAY GRILL - NEW TABLE RESERVATION*\n` +
+                          `---------------------------------------------\n` +
+                          `👤 *Name:* ${this.reservation.name}\n` +
+                          `📞 *Phone:* ${this.reservation.phone}\n` +
+                          `📧 *Email:* ${this.reservation.email}\n\n` +
+                          `👥 *Number of Guests:* ${this.reservation.guests}\n` +
+                          `📅 *Date:* ${this.reservation.date}\n` +
+                          `🕒 *Time Slot:* ${this.reservation.time}\n\n` +
+                          `📝 *Special Requests:* \n${specialRequests}\n` +
+                          `---------------------------------------------\n` +
+                          `_Sent via Highway Grill Reservation Portal_`;
+      
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(messageText)}`;
+      
+      if (typeof window !== 'undefined') {
+        window.open(whatsappUrl, '_blank');
+      }
     }
   }
 

@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
           console.log('Autoplay was prevented or video failed to play: ', err);
         });
       }
-    }, 4000);
+    }, 3000);
   }
 
   ngOnDestroy() {

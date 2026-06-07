@@ -509,5 +509,11 @@ a {
   }
 }
 
+/* Scroll lock utility when overlays are active */
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
 
 
