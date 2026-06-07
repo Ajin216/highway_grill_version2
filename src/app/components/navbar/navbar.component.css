@@ -254,11 +254,47 @@
 
 /* Responsive Breakpoints */
 @media (max-width: 992px) {
+  .navbar {
+    height: 80px;
+    padding: 0 !important;
+  }
+
+  .navbar-container {
+    height: 100%;
+    width: 100%;
+  }
+
   .nav-links, .nav-actions {
     display: none;
   }
   
   .mobile-toggle {
     display: flex;
+  }
+
+  /* Reduce logo heading size on mobile */
+  .logo-title {
+    font-size: 1.15rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* Make mobile drawer start below navbar and fill the rest of the height */
+  .mobile-drawer {
+    top: 80px;
+    height: calc(100vh - 80px);
+    padding: 40px 24px;
+  }
+
+  /* Reduce mobile navigation link font size */
+  .mobile-nav-links a {
+    font-size: 1.25rem;
+  }
+
+  .mobile-nav-links {
+    gap: 1.8rem;
   }
 }
